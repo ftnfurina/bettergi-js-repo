@@ -1,0 +1,4 @@
+packages:
+  - scripts/*
+onlyBuiltDependencies:
+  - simple-git-hooks

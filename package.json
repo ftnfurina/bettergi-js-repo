@@ -1,0 +1,27 @@
+{
+  "name": "bettergi-js-repo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.6.5",
+  "description": "",
+  "author": {
+    "name": "ftnfurina",
+    "url": "https://github.com/ftnfurina"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm --filter=./scripts/* build",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.14.1",
+    "@types/node": "^24.0.1",
+    "dotenv": "^16.5.0",
+    "eslint": "^9.28.0",
+    "simple-git-hooks": "^2.13.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint:fix && git add ."
+  }
+}
