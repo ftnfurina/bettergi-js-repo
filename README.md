@@ -4,7 +4,7 @@
 
 ## 🦶 脚本目录
 
-+ [装备或卸下跟随宠物](./packages/follows-pet/README.md)
++ [装备或卸下跟随宠物](./scripts/follows-pet/README.md)
 
 ## 🔗 其他链接
 
