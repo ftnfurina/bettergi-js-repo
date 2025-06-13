@@ -5,9 +5,8 @@
       "bettergi-js-types"
     ]
   },
-  "include": [
-    "src",
-    "settings.d.ts",
-    "rollup.config.mjs"
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
