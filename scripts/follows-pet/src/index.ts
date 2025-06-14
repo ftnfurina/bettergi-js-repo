@@ -1,3 +1,5 @@
+import { mouseSmoothDrag } from 'bettergi-js-func'
+
 interface Pet {
   name: string
   file: string
@@ -25,26 +27,6 @@ const PETS: Pet[] = [
 ]
 
 /**
- * 垂直拖动屏幕
- * @param x 初始 x 坐标
- * @param yStart 起始 y 坐标
- * @param yEnd 终点 y 坐标
- * @param step 步长
- */
-async function verticalDragScreen(x: number, yStart: number, yEnd: number, step: number = 20): Promise<void> {
-  moveMouseTo(x, yStart)
-  await sleep(100)
-  leftButtonDown()
-  const yStep = (yEnd - yStart) / step
-  for (let i = 1; i <= step; i++) {
-    await sleep(50)
-    moveMouseTo(x, Math.floor(yStart + yStep * i))
-  }
-  await sleep(1000)
-  leftButtonUp()
-}
-
-/**
  * 装备宠物
  * @param pet 宠物
  */
@@ -65,7 +47,7 @@ async function equipPet(pet: Pet): Promise<void> {
     const petRegion = gameRegion.find(petRo)
     if (!petRegion.isExist()) {
       // 未找到宠物，尝试拖动屏幕
-      await verticalDragScreen(1200, 842, 117)
+      await mouseSmoothDrag(1200, 890, 1200, 186, 2000)
       continue
     }
 
@@ -116,7 +98,7 @@ async function removePet(): Promise<void> {
       await sleep(1000)
       return log.info(`已卸下宠物：${pet.name}`)
     }
-    await verticalDragScreen(1200, 842, 117)
+    await mouseSmoothDrag(1200, 890, 1200, 186, 2000)
   }
 
   log.warn('未找到装备中的宠物')

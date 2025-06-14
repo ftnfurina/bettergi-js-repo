@@ -1,5 +1,6 @@
 import path from 'node:path'
 import process from 'node:process'
+import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import env from 'dotenv'
 import { defineConfig } from 'rollup'
@@ -16,6 +17,7 @@ export default defineConfig({
   input: 'src/index.ts',
   output: outDir.map(dir => ({ dir, format: 'esm' })),
   plugins: [
+    resolve(),
     typescript(),
     copy({
       targets: [
