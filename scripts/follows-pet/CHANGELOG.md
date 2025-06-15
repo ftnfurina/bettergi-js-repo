@@ -1,5 +1,11 @@
 # follows-pet
 
+## 0.0.3
+
+### Patch Changes
+
+- Update manifest.json
+
 ## 0.0.2
 
 ### Patch Changes
