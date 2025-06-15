@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       bettergi-js-func:
-        specifier: ^0.0.1
-        version: 0.0.1
+        specifier: ^0.2.1
+        version: 0.2.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^4.14.1
@@ -59,6 +59,8 @@ importers:
         version: 5.8.3
 
   scripts/follows-pet: {}
+
+  scripts/join-friends-world: {}
 
 packages:
 
@@ -636,8 +638,8 @@ packages:
     resolution: {integrity: sha512-pbnl5XzGBdrFU/wT4jqmJVPn2B6UHPBOhzMQkY/SPUPB6QtUXtmBHBIwCbXJol93mOpGMnQyP/+BB19q04xj7g==}
     engines: {node: '>=4'}
 
-  bettergi-js-func@0.0.1:
-    resolution: {integrity: sha512-70r+RnWeN5Ik9WrDkd75FN7yFkcfl/+tXghFvVjmlNPOWG/FivVpPEj2+mmiqdT6HP1Tfwe7UVB/zKEbnuSZiQ==}
+  bettergi-js-func@0.2.1:
+    resolution: {integrity: sha512-4izbeCyE1p862t2BNiv6W5Hrd1dCIq1YuvDkJoFgYMtR7M9G9Pg4UEzLSDHV4nT65M4rviGd5ebkMXrXfBzPtg==}
 
   bettergi-js-types@0.3.2:
     resolution: {integrity: sha512-6pk9zlUK8XxkafNEqF9TJOulUFXbIOBPIagbHHV4BGb4OPPrv5AAo0tHbt85mTbWnUULcL+OzxPrjmIfvUhXgQ==}
@@ -2578,7 +2580,7 @@ snapshots:
     dependencies:
       is-windows: 1.0.2
 
-  bettergi-js-func@0.0.1: {}
+  bettergi-js-func@0.2.1: {}
 
   bettergi-js-types@0.3.2: {}
 

@@ -16,7 +16,7 @@
     "changeset": "changeset"
   },
   "dependencies": {
-    "bettergi-js-func": "^0.0.1"
+    "bettergi-js-func": "^0.2.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.14.1",

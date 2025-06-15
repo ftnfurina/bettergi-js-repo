@@ -1,0 +1,10 @@
+{
+  "name": "join-friends-world",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "rollup -c",
+    "build:watch": "rollup -cw"
+  }
+}
