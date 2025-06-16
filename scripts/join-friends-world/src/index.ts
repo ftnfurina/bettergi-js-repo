@@ -1,17 +1,7 @@
-import { autoZoomOcr, createTimer } from 'bettergi-js-func'
+import { autoZoomOcr, createTimer, isCoOpMode } from 'bettergi-js-func'
 
 // 等待好友确认超时时间 25s
-const WAIT_FRIEND_CONFIRM_TIMEOUT = 25 * 1000
-
-/**
- * 是否在多人游戏中
- */
-function inMultiplayerGame(): boolean {
-  const gameRegion = captureGameRegion()
-  const playerCountRegin = gameRegion.find(autoZoomOcr(340, 18, 53, 53))
-  const playerCountText = playerCountRegin.text.trim().toLocaleLowerCase()
-  return playerCountText.includes('p')
-}
+const WAIT_FRIEND_CONFIRM_TIMEOUT = 25 * 1000;
 
 (async () => {
   try {
@@ -19,9 +9,7 @@ function inMultiplayerGame(): boolean {
     if (!uid) {
       throw new Error('UID 不能为空')
     }
-    await genshin.returnMainUi()
-
-    if (inMultiplayerGame()) {
+    if (await isCoOpMode()) {
       throw new Error('正在多人游戏中，无法加入好友世界')
     }
 
@@ -76,8 +64,13 @@ function inMultiplayerGame(): boolean {
       if (requestText.endsWith('拒绝了多人游戏申请')) {
         throw new Error('好友拒绝了多人游戏')
       }
-
-      if (inMultiplayerGame()) {
+      else if (requestText.startsWith('无法进入')) {
+        throw new Error('无法进入好友世界')
+      }
+      else if (requestText.startsWith('世界主人暂忙')) {
+        throw new Error('好友正在忙，无法加入')
+      }
+      if (await isCoOpMode()) {
         log.info('成功加入好友世界')
         break
       }
