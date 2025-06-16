@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url'
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import env from 'dotenv'
+import fs from 'fs-extra'
+import { readPackage } from 'read-pkg'
 import { defineConfig } from 'rollup'
 import copy from 'rollup-plugin-copy'
 import del from 'rollup-plugin-delete'
@@ -41,7 +43,19 @@ export function initRollupConfig(projectName) {
           { src: 'README.md', dest: outDirs },
         ],
       }),
-      { name: 'watch-public', buildStart() { this.addWatchFile('public') } },
+      { name: 'rollup-plugin-watch', buildStart() { this.addWatchFile('public') } },
+      {
+        name: 'rollup-plugin-update-manifest-version',
+        async closeBundle() {
+          for (const dir of outDirs) {
+            const manifestPath = path.join(dir, 'manifest.json')
+            const manifestJson = fs.readJSONSync(manifestPath, { encoding: 'utf8' })
+            const pkg = await readPackage()
+            manifestJson.version = pkg.version
+            fs.writeJSONSync(manifestPath, manifestJson, { spaces: 2 })
+          }
+        },
+      },
       del({ targets: outDirs, force: true }),
     ],
   })

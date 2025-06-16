@@ -19,12 +19,12 @@ function inMultiplayerGame(): boolean {
     if (!uid) {
       throw new Error('UID 不能为空')
     }
+    await genshin.returnMainUi()
 
     if (inMultiplayerGame()) {
       throw new Error('正在多人游戏中，无法加入好友世界')
     }
 
-    await genshin.returnMainUi()
     log.info(`尝试加入好友世界(UID: ${uid})`)
 
     // 打开好友列表
