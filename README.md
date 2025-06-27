@@ -6,6 +6,7 @@
 
 + [装备或卸下跟随宠物](./scripts/follows-pet/README.md)
 + [加入好友的世界](./scripts/join-friends-world/README.md)
++ [修改游戏音量](./scripts/game-audio/README.md)
 
 ## 🔗 其他链接
 
